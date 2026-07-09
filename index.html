@@ -3751,7 +3751,8 @@ ROUTES.tt = function(){
   else if(ttSt.mode==='match') body = ttRenderMatch();
   else if(ttSt.mode==='fill') body = ttRenderFill();
   else body = ttRenderRef();
-  return `<h1>📘 PfMP T&T / I / O</h1>
+  view().innerHTML = `<button class="back" onclick="go('home')">← Home</button>
+<h1>📘 PfMP T&T / I / O</h1>
 <p class="sub">KA4–KA8 · 16 processes · Flashcard, Quiz, Ghép đôi, Điền trống</p>
 <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:14px">${modeBtns}</div>
 <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:14px">${filterBtns}</div>
