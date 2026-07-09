@@ -291,6 +291,49 @@
   .labtable tr:nth-child(even) td{background:#faf9f6}
   .labchoices{margin-top:6px}
   .labchoices .opt .k{font-weight:700;margin-right:8px;color:var(--brand)}
+
+/* ===== T&T MODULE STYLES ===== */
+.tt-nb{padding:7px 16px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;font-weight:500;transition:all .2s}
+.tt-nb:hover{border-color:var(--brand);color:var(--brand)}.tt-nb.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tt-nb.ka4{border-color:#7c3aed;color:#7c3aed}.tt-nb.ka4.on{background:#7c3aed;border-color:#7c3aed}
+.tt-nb.ka5{border-color:#0369a1;color:#0369a1}.tt-nb.ka5.on{background:#0369a1;border-color:#0369a1}
+.tt-nb.ka6{border-color:#047857;color:#047857}.tt-nb.ka6.on{background:#047857;border-color:#047857}
+.tt-nb.ka7{border-color:#b45309;color:#b45309}.tt-nb.ka7.on{background:#b45309;border-color:#b45309}
+.tt-nb.ka8{border-color:#9f1239;color:#9f1239}.tt-nb.ka8.on{background:#9f1239;border-color:#9f1239}
+.tt-fc{background:var(--card);border:1.5px solid var(--line);border-radius:16px;min-height:220px;padding:28px;text-align:center;cursor:pointer}
+.tt-fc:hover{border-color:var(--brand-2)}
+.tt-fc-inner{transition:transform .45s;transform-style:preserve-3d;position:relative;min-height:180px}
+.tt-fc-inner.flip{transform:rotateY(180deg)}
+.tt-fc-front,.tt-fc-back{backface-visibility:hidden;position:absolute;width:100%;top:0}
+.tt-fc-back{transform:rotateY(180deg)}
+.tt-proc{font-size:22px;font-weight:800;color:var(--brand);margin-bottom:6px}
+.tt-ka{font-size:12px;color:var(--muted);margin-bottom:14px}
+.tt-hint{font-size:13px;color:var(--muted);margin-top:20px}
+.tt-sec{margin-bottom:12px;text-align:left}
+.tt-sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:5px;letter-spacing:1px}
+.tt-tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px;margin:2px}
+.tag-i{background:#eef6f8;border:1px solid #cfe3ea;color:#0369a1}
+.tag-t{background:#eaf6ef;border:1px solid #bbf0d0;color:#047857}
+.tag-o{background:#fff6e9;border:1px solid #f0e4cf;color:#b45309}
+.tt-fc-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.tt-qopt{display:block;width:100%;text-align:left;padding:13px 15px;margin-bottom:9px;border:1.5px solid var(--line);background:var(--card);border-radius:10px;font-size:14px;transition:.12s;cursor:pointer}
+.tt-qopt:hover:not(.tt-done){border-color:var(--brand-2)}
+.tt-qopt.tt-ok{border-color:var(--good);background:#eaf6ef}
+.tt-qopt.tt-err{border-color:var(--bad);background:#fbeceb}
+.tt-expl{background:#fcf8f1;border:1px solid #f0e4cf;border-radius:10px;padding:12px 15px;margin-top:10px;font-size:13px;line-height:1.6}
+.tt-match-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.tt-mcol-lbl{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tt-mi{padding:10px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;font-size:13px;margin-bottom:6px;transition:all .2s}
+.tt-mi:hover{border-color:var(--brand)}.tt-mi.tt-msel{border-color:var(--accent);background:#fff6e9}
+.tt-mi.tt-mok{border-color:var(--good);background:#eaf6ef;cursor:default}.tt-mi.tt-merr{border-color:var(--bad);background:#fbeceb}
+.tt-fill-input{width:100%;padding:12px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);font-size:15px;font-family:inherit;outline:none}
+.tt-fill-input:focus{border-color:var(--brand)}.tt-fill-input.tt-ok{border-color:var(--good);background:#eaf6ef}.tt-fill-input.tt-err{border-color:var(--bad);background:#fbeceb}
+.tt-ref-ka-title{font-size:14px;font-weight:700;padding-bottom:6px;border-bottom:2px solid;margin-bottom:10px}
+.tt-ref-proc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:8px}
+.tt-ref-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.tt-ref-col-lbl{font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.tt-ref-chip{background:#eef0f4;border-radius:4px;padding:2px 6px;margin-bottom:3px;font-size:11px;display:block}
+/* ===== END T&T CSS ===== */
 </style>
 </head>
 <body>
@@ -1664,6 +1707,20 @@ const ROUTES = {
       </div>
       <div class="row between" style="margin-top:18px">
         <span class="note">The bank currently has ${bank[exam].length} ${exam} questions.</span>
+        <button class="mode" onclick="ttMode('fc');go('tt')">
+<div class="ic">🧠</div>
+<div class="t">T&amp;T / I / O Master</div>
+<div class="d">Flashcard · Quiz · Ghép đôi · Điền trống — KA4–KA8</div>
+</button>
+<button class="mode" onclick="ttMode('fc');go('tt')">
+<div class="ic">🧠</div>
+<div class="t">T&amp;T / I / O Master</div>
+<div class="d">Flashcard · Quiz · Ghép đôi · Điền trống — KA4–KA8</div>
+</button>\n        <button class="mode" onclick="ttMode('fc');go('tt')">
+<div class="ic">🧠</div>
+<div class="t">T&T / I / O Master</div>
+<div class="d">Flashcard · Quiz · Ghép đôi · Điền trống — KA4–KA8</div>
+</button>
         <button class="btn sm ghost" onclick="go('import')">⬆ Upload questions</button>
       </div>`;
   },
@@ -3565,6 +3622,278 @@ refreshHeader();
 ['fullscreenchange','webkitfullscreenchange','msfullscreenchange'].forEach(ev=>
   document.addEventListener(ev,()=>{ if(QZ && QZ.cfg && QZ.cfg.mode==='mock' && !QZ._done && document.getElementById('view').querySelector('.exam-tools')) renderExamQ(); }));
 go(cand()? 'home' : 'login');
+
+/* ===== T&T MODULE JS ===== */
+const TT_DATA = [
+  {id:"4.1",ka:"KA4",name:"Develop Portfolio Strategic Plan",
+   inputs:["Organizational strategy and objectives","Organizational process assets","Portfolio","Enterprise environmental factors"],
+   tt:["Portfolio Component Inventory","Strategic Alignment Analysis","Prioritization Analysis","Weighted Ranking and Scoring"],
+   outputs:["Portfolio Strategic Plan","Portfolio"]},
+  {id:"4.2",ka:"KA4",name:"Develop Portfolio Charter",
+   inputs:["Portfolio Strategic Plan","Portfolio","Organizational process assets","Enterprise environmental factors"],
+   tt:["Stakeholder Analysis","Portfolio Component Inventory","Scenario Analysis","Capability and Capacity Analysis"],
+   outputs:["Portfolio Charter","Portfolio"]},
+  {id:"4.3",ka:"KA4",name:"Define Portfolio Roadmap",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio","Organizational process assets","Enterprise environmental factors"],
+   tt:["Interdependency Analysis","Cost-Benefit Analysis","Prioritization Analysis","Weighted Ranking and Scoring"],
+   outputs:["Portfolio Roadmap","Portfolio"]},
+  {id:"4.4",ka:"KA4",name:"Manage Strategic Change",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio","Portfolio Reports","Organizational process assets"],
+   tt:["Gap Analysis","Scenario Analysis","Readiness Assessment","Portfolio Component Inventory"],
+   outputs:["Portfolio Strategic Plan Updates","Portfolio Charter Updates","Portfolio Roadmap Updates","Portfolio Updates","Portfolio Process Assets Updates"]},
+  {id:"5.1",ka:"KA5",name:"Develop Portfolio Management Plan",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Elicitation Techniques","Portfolio Management Information System","Meetings"],
+   outputs:["Portfolio Management Plan","Portfolio Process Assets Updates"]},
+  {id:"5.2",ka:"KA5",name:"Define Portfolio",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio Management Plan","Portfolio","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Weighted Ranking and Scoring","Portfolio Component Inventory","Scenario Analysis","Elicitation Techniques","Portfolio Management Information System"],
+   outputs:["Portfolio Updates","Portfolio Process Assets Updates","Portfolio Management Plan Updates","Portfolio Reports"]},
+  {id:"5.3",ka:"KA5",name:"Optimize Portfolio",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio Management Plan","Portfolio","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Weighted Ranking and Scoring","Capability and Capacity Analysis","Quantitative and Qualitative Analysis","Scenario Analysis","Elicitation Techniques","Portfolio Management Information System"],
+   outputs:["Portfolio Updates","Portfolio Process Assets Updates","Portfolio Management Plan Updates","Portfolio Reports"]},
+  {id:"5.4",ka:"KA5",name:"Authorize Portfolio",
+   inputs:["Portfolio Management Plan","Portfolio"],
+   tt:["Portfolio Authorization Techniques","Portfolio Management Information System"],
+   outputs:["Portfolio Updates","Portfolio Management Plan Updates","Portfolio Reports","Portfolio Process Assets Updates"]},
+  {id:"5.5",ka:"KA5",name:"Provide Portfolio Oversight",
+   inputs:["Portfolio Management Plan","Portfolio Reports"],
+   tt:["Portfolio Review Meetings","Elicitation Techniques"],
+   outputs:["Portfolio Updates","Portfolio Management Plan Updates","Portfolio Process Assets Updates","Portfolio Reports"]},
+  {id:"6.1",ka:"KA6",name:"Develop Portfolio Performance Management Plan",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio","Portfolio Management Plan","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Elicitation Techniques","Portfolio Management Information System","Capability and Capacity Analysis"],
+   outputs:["Portfolio Management Plan Updates","Portfolio Process Assets Updates"]},
+  {id:"6.2",ka:"KA6",name:"Manage Supply and Demand",
+   inputs:["Portfolio Management Plan","Portfolio","Portfolio Reports","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Capability and Capacity Analysis","Quantitative and Qualitative Analysis","Scenario Analysis","Elicitation Techniques","Portfolio Management Information System"],
+   outputs:["Portfolio Updates","Portfolio Management Plan Updates","Portfolio Process Assets Updates","Portfolio Reports"]},
+  {id:"6.3",ka:"KA6",name:"Manage Portfolio Value",
+   inputs:["Portfolio Management Plan","Portfolio","Portfolio Reports","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Elicitation Techniques","Portfolio Management Information System","Value Scoring and Measurement Analysis","Benefits Realization Analysis"],
+   outputs:["Portfolio Updates","Portfolio Management Plan Updates","Portfolio Process Assets Updates","Portfolio Reports"]},
+  {id:"7.1",ka:"KA7",name:"Develop Portfolio Communication Management Plan",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio Roadmap","Portfolio","Portfolio Management Plan","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Elicitation Techniques","Stakeholder Analysis","Communication Requirements Analysis"],
+   outputs:["Portfolio Management Plan Updates","Portfolio Process Assets Updates"]},
+  {id:"7.2",ka:"KA7",name:"Manage Portfolio Information",
+   inputs:["Portfolio Management Plan","Portfolio","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Elicitation Techniques","Portfolio Management Information System","Communication Requirements Analysis","Communication Methods"],
+   outputs:["Portfolio Reports","Portfolio Management Plan Updates","Portfolio Process Assets Updates"]},
+  {id:"8.1",ka:"KA8",name:"Develop Portfolio Risk Management Plan",
+   inputs:["Portfolio Strategic Plan","Portfolio Charter","Portfolio","Portfolio Management Plan","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Weighted Ranking and Scoring Techniques","Quantitative and Qualitative Risk Analysis","Graphical Analytical Methods","Elicitation Techniques"],
+   outputs:["Portfolio Management Plan Updates","Portfolio Process Assets Updates"]},
+  {id:"8.2",ka:"KA8",name:"Manage Portfolio Risks",
+   inputs:["Portfolio Management Plan","Portfolio","Portfolio Reports","Portfolio Process Assets","Enterprise Environmental Factors"],
+   tt:["Weighted Ranking and Scoring Techniques","Quantitative and Qualitative Risk Analysis","Elicitation Techniques","Portfolio Management Information System"],
+   outputs:["Portfolio Updates","Portfolio Management Plan Updates","Portfolio Process Assets Updates","Portfolio Reports"]}
+];
+
+const TT_KA_COLOR = {KA4:'#7c3aed',KA5:'#0369a1',KA6:'#047857',KA7:'#b45309',KA8:'#9f1239'};
+const TT_KA_LABEL = {KA4:'Strategic Mgmt',KA5:'Governance',KA6:'Performance',KA7:'Communications',KA8:'Risk Mgmt'};
+const TT_KA_TITLES = {KA4:'Strategic Management',KA5:'Governance',KA6:'Performance Management',KA7:'Communications Management',KA8:'Risk Management'};
+
+const TT_MATCH_POOL = [
+  {tt:"Weighted Ranking and Scoring",proc:"4.1 Develop Portfolio Strategic Plan"},
+  {tt:"Strategic Alignment Analysis",proc:"4.1 Develop Portfolio Strategic Plan"},
+  {tt:"Scenario Analysis",proc:"4.2 Develop Portfolio Charter"},
+  {tt:"Capability and Capacity Analysis",proc:"4.2 Develop Portfolio Charter"},
+  {tt:"Interdependency Analysis",proc:"4.3 Define Portfolio Roadmap"},
+  {tt:"Cost-Benefit Analysis",proc:"4.3 Define Portfolio Roadmap"},
+  {tt:"Gap Analysis",proc:"4.4 Manage Strategic Change"},
+  {tt:"Readiness Assessment",proc:"4.4 Manage Strategic Change"},
+  {tt:"Portfolio Authorization Techniques",proc:"5.4 Authorize Portfolio"},
+  {tt:"Portfolio Review Meetings",proc:"5.5 Provide Portfolio Oversight"},
+  {tt:"Value Scoring and Measurement Analysis",proc:"6.3 Manage Portfolio Value"},
+  {tt:"Benefits Realization Analysis",proc:"6.3 Manage Portfolio Value"},
+  {tt:"Stakeholder Analysis",proc:"7.1 Develop Portfolio Comm Mgmt Plan"},
+  {tt:"Communication Requirements Analysis",proc:"7.1 Develop Portfolio Comm Mgmt Plan"},
+  {tt:"Communication Methods",proc:"7.2 Manage Portfolio Information"},
+  {tt:"Graphical Analytical Methods",proc:"8.1 Develop Portfolio Risk Mgmt Plan"},
+  {tt:"Quantitative and Qualitative Risk Analysis",proc:"8.1 Develop Portfolio Risk Mgmt Plan"}
+];
+
+const TT_FILL = [
+  {t:"Process 5.4 Authorize Portfolio chỉ có 2 inputs: [B] và Portfolio.",a:"Portfolio Management Plan",h:"5.4 KHÔNG có Strategic Plan/Charter/Roadmap làm input — khác với 5.1–5.3"},
+  {t:"Process 5.5 Provide Portfolio Oversight dùng [B] và Elicitation Techniques.",a:"Portfolio Review Meetings",h:"5.5 = Review Meetings + Elicit. Không dùng PMIS."},
+  {t:"Process 4.3 Define Portfolio Roadmap dùng [B] để so sánh lợi ích và chi phí.",a:"Cost-Benefit Analysis",h:"4.3: Interdependency + Cost-Benefit + Prioritization + WRS"},
+  {t:"Process 7.2 Manage Portfolio Information dùng thêm [B] để chọn kênh giao tiếp.",a:"Communication Methods",h:"7.2 có thêm Communication Methods so với 7.1"},
+  {t:"Process 8.1 dùng [B] để thể hiện risk dạng heat map / bubble chart.",a:"Graphical Analytical Methods",h:"Chỉ 8.1 có Graphical Analytical Methods — 8.2 không có"},
+  {t:"Process 6.3 Manage Portfolio Value dùng [B] để đánh giá value đang tạo ra.",a:"Benefits Realization Analysis",h:"6.3 = Elicit + PMIS + Value Scoring + Benefits Realization"},
+  {t:"Process 4.4 Manage Strategic Change dùng [B] để đánh giá mức sẵn sàng.",a:"Readiness Assessment",h:"4.4 = Gap Analysis + Scenario + Readiness Assessment + Inventory"},
+  {t:"Process 5.3 Optimize Portfolio thêm [B] so với 5.2 Define Portfolio.",a:"Capability and Capacity Analysis",h:"5.3 có tất cả T&T của 5.2 + Capability & Capacity Analysis"},
+  {t:"Process 7.1 dùng [B] để phân tích nhu cầu thông tin của stakeholder.",a:"Communication Requirements Analysis",h:"7.1 = Elicit + Stakeholder Analysis + Communication Requirements Analysis"},
+  {t:"Process 4.4 Manage Strategic Change bắt đầu bằng [B] để tìm strategic gap.",a:"Gap Analysis",h:"4.4 mở đầu bằng Gap Analysis → Scenario → Readiness → Inventory"}
+];
+
+let ttSt = {
+  mode:'fc', filter:'all',
+  fcIdx:0, fcFlip:false,
+  score:0, streak:0, correct:0,
+  qQ:[], qIdx:0, qCorrect:0, qAns:false,
+  mPairs:[], mLS:null, mRS:null, mDone:0, mFb:'',
+  fItems:[], fIdx:0, fAns:false
+};
+
+function ttFiltered(){return ttSt.filter==='all'?TT_DATA:TT_DATA.filter(d=>d.ka===ttSt.filter)}
+function ttShuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
+
+ROUTES.tt = function(){
+  const modes = [['fc','🃏 Flashcard'],['quiz','❓ Quiz'],['match','🔗 Ghép đôi'],['fill','✍️ Điền trống'],['ref','📋 Tham chiếu']];
+  const modeBtns = modes.map(([k,v])=>`<button class="btn sm${ttSt.mode===k?'':' ghost'}" onclick="ttMode('${k}')">${v}</button>`).join('');
+  const filters = [['all','Tất cả'],['KA4','KA4 Strategic'],['KA5','KA5 Governance'],['KA6','KA6 Performance'],['KA7','KA7 Comms'],['KA8','KA8 Risk']];
+  const filterBtns = filters.map(([f,l])=>`<button class="tt-nb${f==='all'?'':' '+f.toLowerCase()}${ttSt.filter===f?' on':''}" onclick="ttFilter('${f}')">${l}</button>`).join('');
+  let body = '';
+  if(ttSt.mode==='fc') body = ttRenderFC();
+  else if(ttSt.mode==='quiz') body = ttRenderQuiz();
+  else if(ttSt.mode==='match') body = ttRenderMatch();
+  else if(ttSt.mode==='fill') body = ttRenderFill();
+  else body = ttRenderRef();
+  return `<h1>📘 PfMP T&T / I / O</h1>
+<p class="sub">KA4–KA8 · 16 processes · Flashcard, Quiz, Ghép đôi, Điền trống</p>
+<div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:14px">${modeBtns}</div>
+<div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:14px">${filterBtns}</div>
+<div class="row" style="background:#eef6f8;border-radius:10px;padding:10px 16px;margin-bottom:18px;gap:24px">
+  <span style="font-size:13px;color:var(--muted)">Điểm <b style="color:var(--brand);font-size:17px">${ttSt.score}</b></span>
+  <span style="font-size:13px;color:var(--muted)">Streak <b style="color:var(--accent)">${ttSt.streak}</b></span>
+  <span style="font-size:13px;color:var(--muted)">Đúng <b style="color:var(--good)">${ttSt.correct}</b></span>
+</div>${body}`;
+};
+
+function ttMode(m){ttSt.mode=m;if(m==='quiz'&&(!ttSt.qQ||ttSt.qQ.length===0))ttInitQuiz();if(m==='match'&&(!ttSt.mPairs||ttSt.mPairs.length===0))ttInitMatch();if(m==='fill'&&(!ttSt.fItems||ttSt.fItems.length===0))ttInitFill();go('tt')}
+function ttFilter(f){ttSt.filter=f;ttSt.fcIdx=0;ttSt.fcFlip=false;if(ttSt.mode==='quiz')ttInitQuiz();go('tt')}
+
+/* FLASHCARD */
+function ttRenderFC(){
+  const cards=ttFiltered();
+  if(!cards.length)return'<p class="note">Không có process nào.</p>';
+  const c=cards[ttSt.fcIdx];
+  const front=`<div class="tt-fc-front"><div class="tt-proc">${c.id} ${c.name}</div><div class="tt-ka" style="color:${TT_KA_COLOR[c.ka]}">${c.ka} — ${TT_KA_LABEL[c.ka]}</div><div class="tt-hint">👆 Click để xem Input / T&T / Output</div></div>`;
+  const back=`<div class="tt-fc-back"><div class="tt-sec"><div class="tt-sec-lbl">📥 Inputs</div>${c.inputs.map(i=>`<span class="tt-tag tag-i">${i}</span>`).join('')}</div><div class="tt-sec"><div class="tt-sec-lbl">🔧 T&T</div>${c.tt.map(t=>`<span class="tt-tag tag-t">${t}</span>`).join('')}</div><div class="tt-sec"><div class="tt-sec-lbl">📤 Outputs</div>${c.outputs.map(o=>`<span class="tt-tag tag-o">${o}</span>`).join('')}</div></div>`;
+  return `<p style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:12px">Thẻ ${ttSt.fcIdx+1} / ${cards.length}</p>
+<div class="tt-fc" onclick="ttFlip()"><div class="tt-fc-inner${ttSt.fcFlip?' flip':''}" id="tt-fci">${front}${back}</div></div>
+<div class="tt-fc-nav"><button class="btn ghost sm" onclick="ttFCNav(-1)">← Trước</button><button class="btn sm" onclick="ttFCNav(1)">Tiếp →</button></div>`;
+}
+function ttFlip(){ttSt.fcFlip=!ttSt.fcFlip;const el=document.getElementById('tt-fci');if(el)el.classList.toggle('flip',ttSt.fcFlip);}
+function ttFCNav(d){const c=ttFiltered();ttSt.fcIdx=(ttSt.fcIdx+d+c.length)%c.length;ttSt.fcFlip=false;go('tt')}
+
+/* QUIZ */
+function ttInitQuiz(){
+  const pool=ttFiltered();const qs=[];
+  pool.forEach(proc=>{
+    const wT=[...new Set(TT_DATA.filter(d=>d.id!==proc.id).flatMap(d=>d.tt).filter(t=>!proc.tt.includes(t)))];
+    const d3=ttShuffle(wT).slice(0,3);
+    if(d3.length===3){const cor=proc.tt[0];const opts=ttShuffle([cor,...d3]);qs.push({q:`Process <b>${proc.id} ${proc.name}</b> dùng T&T nào?`,opts,ans:opts.indexOf(cor),ex:`✅ <b>${cor}</b> là T&T của ${proc.id} ${proc.name}.`,ka:proc.ka})}
+    const wO=[...new Set(TT_DATA.filter(d=>d.id!==proc.id).flatMap(d=>d.outputs).filter(o=>!proc.outputs.includes(o)))];
+    const d3o=ttShuffle(wO).slice(0,3);
+    if(d3o.length===3){const cor=proc.outputs[0];const opts=ttShuffle([cor,...d3o]);qs.push({q:`Output nào được tạo từ <b>${proc.id} ${proc.name}</b>?`,opts,ans:opts.indexOf(cor),ex:`✅ <b>${cor}</b> là output của ${proc.id}.`,ka:proc.ka})}
+    const wP=ttShuffle(TT_DATA.filter(d=>d.id!==proc.id&&!d.tt.includes(proc.tt[0]))).slice(0,3);
+    if(proc.tt.length>0&&wP.length===3){const tt=proc.tt[0];const opts=ttShuffle([proc.name,...wP.map(d=>d.name)]);qs.push({q:`<b>${tt}</b> được dùng trong process nào?`,opts,ans:opts.indexOf(proc.name),ex:`✅ ${proc.id} — ${proc.name}.`,ka:proc.ka})}
+  });
+  ttSt.qQ=ttShuffle(qs);ttSt.qIdx=0;ttSt.qCorrect=0;ttSt.qAns=false;
+}
+function ttRenderQuiz(){
+  if(!ttSt.qQ||ttSt.qQ.length===0){ttInitQuiz();return go('tt')}
+  if(ttSt.qIdx>=ttSt.qQ.length){
+    const pct=Math.round(ttSt.qCorrect/ttSt.qQ.length*100);
+    return `<div class="card" style="padding:32px;text-align:center"><div class="scorebig ${pct>=70?'pass':'fail'}">${pct}%</div><p style="color:var(--muted);margin:8px 0 20px">Quiz xong · ${ttSt.qCorrect}/${ttSt.qQ.length} đúng</p><button class="btn" onclick="ttInitQuiz();go('tt')">🔄 Làm lại</button></div>`;
+  }
+  const q=ttSt.qQ[ttSt.qIdx];
+  const opts=q.opts.map((o,i)=>`<button class="tt-qopt${ttSt.qAns?' tt-done':''}" id="tto${i}" onclick="ttAns(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('');
+  const exp=ttSt.qAns?`<div class="tt-expl">${q.ex}</div><div style="text-align:right;margin-top:10px"><button class="btn sm" onclick="ttNextQ()">Tiếp →</button></div>`:'';
+  return `<div class="card qbox"><div class="qmeta"><span class="dom">${q.ka}</span><span>Câu ${ttSt.qIdx+1}/${ttSt.qQ.length} · ✅${ttSt.qCorrect}</span></div><div class="qtext">${q.q}</div>${opts}${exp}</div>`;
+}
+function ttAns(idx){
+  if(ttSt.qAns)return;ttSt.qAns=true;
+  const q=ttSt.qQ[ttSt.qIdx];
+  for(let i=0;i<q.opts.length;i++){const el=document.getElementById('tto'+i);if(!el)continue;if(i===q.ans)el.classList.add('tt-ok');else if(i===idx)el.classList.add('tt-err');}
+  if(idx===q.ans){ttSt.qCorrect++;ttSt.score+=10;ttSt.streak++;ttSt.correct++;}else ttSt.streak=0;
+  go('tt');
+}
+function ttNextQ(){ttSt.qIdx++;ttSt.qAns=false;go('tt')}
+
+/* MATCHING */
+function ttInitMatch(){ttSt.mPairs=ttShuffle(TT_MATCH_POOL).slice(0,6);ttSt.mLS=null;ttSt.mRS=null;ttSt.mDone=0;ttSt.mFb='';ttSt._rights=ttShuffle(ttSt.mPairs.map(p=>p.proc));}
+function ttRenderMatch(){
+  if(!ttSt.mPairs||ttSt.mPairs.length===0)ttInitMatch();
+  if(!ttSt._rights)ttSt._rights=ttShuffle(ttSt.mPairs.map(p=>p.proc));
+  const left=ttSt.mPairs.map((p,i)=>`<div class="tt-mi${ttSt._mLOk&&ttSt._mLOk[i]?' tt-mok':''}" id="tml${i}" onclick="ttMS('l',${i})">${p.tt}</div>`).join('');
+  const right=ttSt._rights.map((r,i)=>`<div class="tt-mi${ttSt._mROk&&ttSt._mROk[i]?' tt-mok':''}" id="tmr${i}" data-p="${r}" onclick="ttMS('r',${i})">${r}</div>`).join('');
+  const fb=ttSt.mFb||`<p class="note" style="text-align:center">${ttSt.mDone}/${ttSt.mPairs.length} ghép đúng — chọn T&T (trái) rồi Process (phải)</p>`;
+  return `<div class="tt-match-grid"><div><div class="tt-mcol-lbl">Tool / Technique</div>${left}</div><div><div class="tt-mcol-lbl">Process</div>${right}</div></div>${fb}<div style="text-align:center;margin-top:12px"><button class="btn sm ghost" onclick="ttInitMatch();go('tt')">🔀 Shuffle mới</button></div>`;
+}
+function ttMS(side,idx){
+  if(side==='l'){document.querySelectorAll('[id^=tml]').forEach(e=>e.classList.remove('tt-msel'));const el=document.getElementById('tml'+idx);if(el&&!el.classList.contains('tt-mok'))el.classList.add('tt-msel');ttSt.mLS=idx;}
+  else{document.querySelectorAll('[id^=tmr]').forEach(e=>e.classList.remove('tt-msel'));const el=document.getElementById('tmr'+idx);if(el&&!el.classList.contains('tt-mok'))el.classList.add('tt-msel');ttSt.mRS=idx;}
+  if(ttSt.mLS!==null&&ttSt.mRS!==null){
+    const lEl=document.getElementById('tml'+ttSt.mLS),rEl=document.getElementById('tmr'+ttSt.mRS);
+    const expected=ttSt.mPairs[ttSt.mLS].proc,selected=rEl?.dataset?.p;
+    if(!ttSt._mLOk)ttSt._mLOk={};if(!ttSt._mROk)ttSt._mROk={};
+    if(expected===selected){
+      lEl?.classList.replace('tt-msel','tt-mok');rEl?.classList.replace('tt-msel','tt-mok');
+      ttSt._mLOk[ttSt.mLS]=true;ttSt._mROk[ttSt.mRS]=true;
+      ttSt.mDone++;ttSt.score+=15;ttSt.streak++;ttSt.correct++;
+      ttSt.mFb=`<div class="expl" style="color:var(--good)">✅ Đúng! <b>${ttSt.mPairs[ttSt.mLS].tt}</b> → ${selected}</div>`;
+    }else{
+      lEl?.classList.replace('tt-msel','tt-merr');rEl?.classList.replace('tt-msel','tt-merr');
+      ttSt.streak=0;ttSt.mFb=`<div class="expl" style="color:var(--bad)">❌ Sai! Thử lại.</div>`;
+      setTimeout(()=>{lEl?.classList.remove('tt-merr');rEl?.classList.remove('tt-merr');},1200);
+    }
+    ttSt.mLS=null;ttSt.mRS=null;
+  }
+}
+
+/* FILL BLANK */
+function ttInitFill(){ttSt.fItems=ttShuffle([...TT_FILL]);ttSt.fIdx=0;ttSt.fAns=false;}
+function ttRenderFill(){
+  if(!ttSt.fItems||ttSt.fItems.length===0)ttInitFill();
+  if(ttSt.fIdx>=ttSt.fItems.length)return`<div class="card" style="padding:32px;text-align:center"><div class="scorebig pass">🎉</div><p style="color:var(--muted);margin:8px 0 20px">Hoàn thành ${ttSt.fItems.length} câu!</p><button class="btn" onclick="ttInitFill();go('tt')">🔄 Làm lại</button></div>`;
+  const item=ttSt.fItems[ttSt.fIdx];
+  const q=item.t.replace('[B]',`<span style="border-bottom:2px solid var(--brand);padding:0 6px;color:var(--brand);font-weight:700">___________</span>`);
+  return `<div class="card qbox"><div class="qmeta"><span>Điền chỗ trống</span><span>Câu ${ttSt.fIdx+1}/${ttSt.fItems.length}</span></div>
+<div class="qtext" style="font-size:16px;line-height:1.8;margin-bottom:16px">${q}</div>
+<input class="tt-fill-input" id="tt-fi" placeholder="Nhập đáp án..." onkeydown="if(event.key==='Enter')ttCF()">
+<div id="tt-fm" style="margin-top:8px;font-size:13px"></div>
+<div class="row" style="gap:10px;margin-top:14px"><button class="btn" onclick="ttCF()">Kiểm tra ✓</button><button class="btn ghost sm" onclick="ttRF()">Xem đáp án</button></div></div>`;
+}
+function ttNorm(s){return s.toLowerCase().replace(/[^a-z0-9]/g,'')}
+function ttCF(){
+  if(ttSt.fAns)return;
+  const inp=document.getElementById('tt-fi');if(!inp)return;
+  const item=ttSt.fItems[ttSt.fIdx];
+  const ok=ttNorm(inp.value)===ttNorm(item.a)||(inp.value.trim().length>5&&ttNorm(item.a).includes(ttNorm(inp.value)));
+  ttSt.fAns=true;inp.classList.add(ok?'tt-ok':'tt-err');
+  const msg=document.getElementById('tt-fm');
+  if(msg){msg.innerHTML=ok?`✅ Đúng! <b>${item.a}</b>`:`❌ Đáp án: <b>${item.a}</b><br><span style="color:var(--muted)">${item.h}</span>`;msg.style.color=ok?'var(--good)':'var(--bad)';}
+  if(ok){ttSt.score+=20;ttSt.streak++;ttSt.correct++;}else ttSt.streak=0;
+  setTimeout(()=>{ttSt.fAns=false;ttSt.fIdx++;go('tt');},2500);
+}
+function ttRF(){
+  if(ttSt.fAns)return;ttSt.fAns=true;
+  const item=ttSt.fItems[ttSt.fIdx];
+  const inp=document.getElementById('tt-fi');if(inp){inp.value=item.a;inp.classList.add('tt-ok');}
+  const msg=document.getElementById('tt-fm');if(msg){msg.innerHTML=`💡 <b>${item.a}</b><br><span style="color:var(--muted)">${item.h}</span>`;msg.style.color='var(--accent)';}
+  ttSt.streak=0;setTimeout(()=>{ttSt.fAns=false;ttSt.fIdx++;go('tt');},3000);
+}
+
+/* REFERENCE TABLE */
+function ttRenderRef(){
+  const groups={KA4:[],KA5:[],KA6:[],KA7:[],KA8:[]};
+  ttFiltered().forEach(d=>groups[d.ka]&&groups[d.ka].push(d));
+  return Object.entries(groups).filter(([,v])=>v.length>0).map(([ka,procs])=>`
+<div style="margin-bottom:24px">
+  <div class="tt-ref-ka-title" style="border-color:${TT_KA_COLOR[ka]};color:${TT_KA_COLOR[ka]}">${ka} — ${TT_KA_TITLES[ka]}</div>
+  ${procs.map(p=>`<div class="tt-ref-proc"><div style="font-size:13px;font-weight:700;margin-bottom:8px">${p.id} — ${p.name}</div>
+  <div class="tt-ref-cols">
+    <div><div class="tt-ref-col-lbl">📥 Inputs</div>${p.inputs.map(i=>`<span class="tt-ref-chip" style="background:#eef6f8;color:#0369a1">${i}</span>`).join('')}</div>
+    <div><div class="tt-ref-col-lbl">🔧 T&T</div>${p.tt.map(t=>`<span class="tt-ref-chip" style="background:#eaf6ef;color:#047857">${t}</span>`).join('')}</div>
+    <div><div class="tt-ref-col-lbl">📤 Outputs</div>${p.outputs.map(o=>`<span class="tt-ref-chip" style="background:#fff6e9;color:#b45309">${o}</span>`).join('')}</div>
+  </div></div>`).join('')}
+</div>`).join('');
+}
+/* ===== END T&T MODULE JS ===== */
 </script>
 </body>
 </html>
